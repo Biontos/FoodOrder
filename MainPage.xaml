@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FoodOrderApp"
+             x:Class="FoodOrderApp.MainPage"
+             Title="Главная">
+    <StackLayout Padding="20">
+        <Label Text="Выберите товары" FontSize="24" />
+
+        <CollectionView x:Name="ProductCollection" ItemsSource="{Binding Products}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" Orientation="Horizontal">
+                        <Label Text="{Binding Name}" VerticalOptions="Center" />
+                        <Label Text="{Binding Price, StringFormat=' Цена: {0:C}'}" VerticalOptions="Center" />
+                        <Entry Placeholder=" Кол-во" Keyboard="Numeric" 
+                               Text="{Binding Quantity, Mode=TwoWay}" WidthRequest="60"/>
+                        <Button Text="Добавить в корзину" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=AddToCartCommand}"
+                                CommandParameter="{Binding .}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Перейти в корзину" Command="{Binding NavigateToCartCommand}" />
+    </StackLayout>
+</ContentPage>

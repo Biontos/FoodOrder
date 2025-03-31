@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FoodOrderApp"
+             x:Class="FoodOrderApp.CartPage"
+             Title="Корзина">
+
+    <StackLayout Padding="20">
+        <CollectionView x:Name="CartCollection" ItemsSource="{Binding Cart}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" Orientation="Horizontal">
+                        <Label Text="{Binding Product.Name}" VerticalOptions="Center" />
+                        <Label Text="{Binding Quantity, StringFormat=' Кол-во: {0}'}" VerticalOptions="Center" />
+                        <Label Text="{Binding Product.Price, StringFormat=' Цена: {0:C}'}" VerticalOptions="Center" />
+                        <Button Text="Удалить" Command="{Binding Source={RelativeSource AncestorType={x:Type local:CartPage}}, Path=RemoveFromCartCommand}" CommandParameter="{Binding .}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Оформить заказ" Command="{Binding PlaceOrderCommand}" />
+    </StackLayout>
+</ContentPage>
