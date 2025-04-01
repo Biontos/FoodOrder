@@ -1,12 +1,14 @@
 using System.Collections.ObjectModel;
 using FoodOrderApp.Models;
+using Microsoft.Maui.Controls;
+
 namespace FoodOrderApp
 {
     public partial class PaymentPage : ContentPage
     {
         public ObservableCollection<CartItem> Cart { get; set; }
-        public List<string> PaymentMethods { get; set; }  
-        public string SelectedPaymentMethod { get; set; }  
+        public List<string> PaymentMethods { get; set; }
+        public string SelectedPaymentMethod { get; set; }
 
         public Command ConfirmOrderCommand { get; }
 
@@ -18,7 +20,7 @@ namespace FoodOrderApp
 
             PaymentMethods = new List<string>
             {
-                "Наложенный платеж",
+                "Наличная оплата",
                 "Оплата картой",
             };
 
@@ -38,7 +40,6 @@ namespace FoodOrderApp
             await DisplayAlert("Заказ оформлен",
                 $"Ваш заказ оформлен. Способ оплаты: {SelectedPaymentMethod}.", "OK");
 
-            await Navigation.PopToRootAsync(); 
         }
     }
 }

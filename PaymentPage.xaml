@@ -12,13 +12,13 @@
                 <DataTemplate>
                     <StackLayout Padding="10" Orientation="Horizontal">
                         <Label Text="{Binding Product.Name}" VerticalOptions="Center" />
-                        <Label Text="{Binding Quantity, StringFormat='Кол-во: {0}'}" VerticalOptions="Center" />
-                        <Label Text="{Binding Product.Price, StringFormat='Цена: {0:C}'}" VerticalOptions="Center" />
+                        <Label Text="{Binding Quantity, StringFormat=' Кол-во: {0}'}" VerticalOptions="Center" />
+                        <Label Text="{Binding Product.Price, StringFormat=' Цена: {0:C}'}" VerticalOptions="Center" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        
+
         <Label Text="Выберите способ оплаты" FontSize="18" />
         <Picker x:Name="PaymentMethodsPicker" ItemsSource="{Binding PaymentMethods}">
             <Picker.SelectedItem>
